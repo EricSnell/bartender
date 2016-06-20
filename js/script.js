@@ -6,8 +6,6 @@
 // Use those Constructors to create Objects representing the Questions, Ingredients,
 // and pantry
 
-// The UI will ask a Question and provide an input for the answer
-
 // When the user submits choice, you should build a preferences Object (if the user
 // chooses wants a strong drink then this should be recording in the Object)
 
@@ -17,30 +15,37 @@
 // createDrink would randomize what ingredients to pick based on answers
 
 $(document).ready(function(event){
+	
+	$('.testButton').click(function(event){
+		event.preventDefault();
+		createDrink();
+	})
 
 
-/*var Person = function(firstName, Lastname){
-    this.firstName = firstName;
-    this.lastName = lastName;
-}
+/*====== CONSTRUCTORS =======*/
 
-var joe = new Person('joe', 'doe'); */
+	var Question = function(tastePref, bartenderQuestion) {
+		this.tastePref = tastePref;
+		this.bartenderQuestion = bartenderQuestion;
+	}
 
-var Question = function(tastePref, bartenderQuestion) {
-	this.tastePref = tastePref;
-	this.bartenderQuestion = bartenderQuestion;
-}
-
-var strong = new Question("strong", "Do you like your drinks strong?");
-var salty = new Question("salty", "Do you like it salty?");
-var bitter = new Question("bitter", "Bitter?");
-var sweet = new Question("sweet", "Sweet?");
-var fruity = new Question("fruity", "Some fruit flavor?");
-
-var questions = [strong, salty, bitter, sweet, fruity];
+	var Ingredients = function(type, ingredients){
+		this.type = type;
+		this.ingredients = ingredients;
+	}
 
 
-$('.displayQuestion').text('questions[0].bartenderQuestion');
+
+/*======= VARIABLES ========*/
+
+	var strong = new Question("strong", "Do you like your drinks strong?");
+	var salty = new Question("salty", "Do you like it salty?");
+	var bitter = new Question("bitter", "Bitter?");
+	var sweet = new Question("sweet", "Sweet?");
+	var fruity = new Question("fruity", "Some fruit flavor?");
+
+	var questions = [strong, salty, bitter, sweet, fruity];
+
 
 	// contains all of the available ingredients
 	var ingredientList = {
@@ -52,24 +57,30 @@ $('.displayQuestion').text('questions[0].bartenderQuestion');
 	}
 
 
-	var inventory = {
+	var pantry = {
 		"rum": 10, 
 		"whiskey": 5,
 		"gin": 12
 	}
 
-//var Ingredients = function()
-	$('.testButton').click(function(){
-		event.preventDefault();
-		console.log('works');
-		$('.displayQuestion').text('questions[0].bartenderQuestion');
-	})
 
-
+	askQuestion();
 /*--------- FUNCTIONS ----------*/
-	//var newQuestion = function(question) {
 
-	//}
+	function askQuestion() {
+		for (var i = 0; i < questions.length; i++) {
+			$('.displayQuestion').append(questions[i].bartenderQuestion + '<input type="checkbox" id="' + questions[i].tastePref + '">YES<br>');
+		};
+	}
 
+	function createDrink() {
+		for (var i in ingredientList) {
+			if ($('#' + i).prop('checked')) {
+				
+			} else {
+				
+			}
+		}
+	}	
 
 });
