@@ -18,29 +18,58 @@
 
 $(document).ready(function(event){
 
-	// store question objects
-	var questions = {
-		strong: "Do you like your drinks strong?",
-		salty:
-	}
+
+/*var Person = function(firstName, Lastname){
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+var joe = new Person('joe', 'doe'); */
+
+var Question = function(tastePref, bartenderQuestion) {
+	this.tastePref = tastePref;
+	this.bartenderQuestion = bartenderQuestion;
+}
+
+var strong = new Question("strong", "Do you like your drinks strong?");
+var salty = new Question("salty", "Do you like it salty?");
+var bitter = new Question("bitter", "Bitter?");
+var sweet = new Question("sweet", "Sweet?");
+var fruity = new Question("fruity", "Some fruit flavor?");
+
+var questions = [strong, salty, bitter, sweet, fruity];
+
+
+$('.displayQuestion').text('questions[0].bartenderQuestion');
 
 	// contains all of the available ingredients
-	var ingredients = {
-		strong: ["rum", "whiskey", "gin"],
-		salty: ["olive",]
+	var ingredientList = {
+		strong: ['rum', 'whiskey', 'gin'],
+		salty: ['rumsalty', 'whiskeysalty', 'ginsalty'],
+		bitter: ['rumbitter', 'whiskeybitter', 'ginbitter'],
+		sweet: ['rumsweet', 'whiskeysweet', 'ginsweet'],
+		fruity: ['rumfruity', 'whiskeyfruity', 'ginfruity']
 	}
 
-	var pantry = {
+
+	var inventory = {
 		"rum": 10, 
-		"whiskey": 5
+		"whiskey": 5,
+		"gin": 12
 	}
 
-
-
+//var Ingredients = function()
+	$('.testButton').click(function(){
+		event.preventDefault();
+		console.log('works');
+		$('.displayQuestion').text('questions[0].bartenderQuestion');
+	})
 
 
 /*--------- FUNCTIONS ----------*/
+	//var newQuestion = function(question) {
 
+	//}
 
 
 });
