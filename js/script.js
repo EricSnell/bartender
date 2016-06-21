@@ -1,18 +1,3 @@
-/* Game asks questions to determine your taste and identifies ingredients
-   to suit those tastes. */
-
-// Create Constructor Functions for Questions, Ingredients, and the Pantry
-
-// Use those Constructors to create Objects representing the Questions, Ingredients,
-// and pantry
-
-// When the user submits choice, you should build a preferences Object (if the user
-// chooses wants a strong drink then this should be recording in the Object)
-
-// Ingredient category and Question category
-// create cunstroctors that create category
-
-/*-------------------------------------------------------------------*/
 
 /*========= MAIN CODE BODY==========*/
 
@@ -27,20 +12,25 @@ $(document).ready(function(event){
 
 /*========== CONSTRUCTORS ===========*/
 
-	var Question = function(tastePref, bartenderQuestion, ingredients) {
+	var DrinkStyle = function(tastePref, bartenderQuestion, ingredients) {
 		this.tastePref = tastePref;
 		this.bartenderQuestion = bartenderQuestion;
 		this.ingredients = ingredients;
-	}
+	};
+
+//	DrinkStyle.prototype.randomizer = function () {
+//		return this.ingredients[Math.floor(Math.random() * 3)]
+//	};
+
 
 /*============ VARIABLES ============*/
 
 // Question/Taste Objects created using Question constructor
-	var strong = new Question("strong", "Do ye like yer drinks strong?", ['Glug of rum', 'slug of whiskey', 'splash of gin']);
-	var salty = new Question("salty", "Do ye like it with a salty tang?", ['Olive on a stick', 'salt-dusted rim', 'rasher of bacon']);
-	var bitter = new Question("bitter", "Are ye a lubber who likes it bitter?", ['Shake of bitters', 'splash of tonic', 'twist of lemon peel']);
-	var sweet = new Question("sweet", "Would ye like a bit of sweetness with yer poison?", ['Sugar cube', 'spoonful of honey', 'splash of cola']);
-	var fruity = new Question("fruity", "Are ye one for a fruity finish?", ['Slice of orange', 'dash of cassis', 'cherry on top']);
+	var strong = new DrinkStyle("strong", "Do ye like yer drinks strong?", ['Glug of rum', 'slug of whiskey', 'splash of gin']);
+	var salty = new DrinkStyle("salty", "Do ye like it with a salty tang?", ['Olive on a stick', 'salt-dusted rim', 'rasher of bacon']);
+	var bitter = new DrinkStyle("bitter", "Are ye a lubber who likes it bitter?", ['Shake of bitters', 'splash of tonic', 'twist of lemon peel']);
+	var sweet = new DrinkStyle("sweet", "Would ye like a bit of sweetness with yer poison?", ['Sugar cube', 'spoonful of honey', 'splash of cola']);
+	var fruity = new DrinkStyle("fruity", "Are ye one for a fruity finish?", ['Slice of orange', 'dash of cassis', 'cherry on top']);
 
 
 // Array of all Question/Taste objects
@@ -58,39 +48,28 @@ $(document).ready(function(event){
 
 
 // Inventory of each ingredient
-	var strongInv = {
+	var Pantry = {
+		// strong 
 		'Glug of rum': 9,
 		'slug of whiskey': 7,
-		'splash of gin': 8
-	}
-
-	var saltyInv = {
+		'splash of gin': 8,
+		// salty
 		'Olive on a stick': 5,
 		'slat-dusted rim': 4,
-		'rasher of bacon': 7
-	}	
-
-	var bitterInv = {
+		'rasher of bacon': 7,
+		// bitter
 		'Shake of bitters': 5,
 		'splash of tonic': 6,
-		'twist of lemon peel': 3
-	}
-
-	var sweetInv = {
+		'twist of lemon peel': 3,
+		// sweet
 		'Sugar cube': 5,
 		'spoonful of honey': 3,
-		'splash of cola': 4
-	}
-
-	var fruityInv = {
+		'splash of cola': 4,
+		// fruity
 		'Slice of orange': 6,
 		'dash of cassis': 8,
-		'cherry on top': 2
-	}
-
-
-// Array of Ingredients/Inventory objects
-	var Pantry = [strongInv, saltyInv, bitterInv, sweetInv, fruityInv];
+		'cherry on top': 2,
+	};
 	
 
 	askQuestion();
@@ -109,25 +88,27 @@ $(document).ready(function(event){
 // Randomizes what ingredients to pick based on choices and displays drink
 	function createDrink() {
 		var ingredientsPicked = []; 
+		var counter = 0
 
 		for (var i in ingredientList) {
 			if ($('#' + i).prop('checked')) {  // 'For In' Loop that determines if YES is checked
+			//	var objectArray = Object.keys()
 				// Get random item from array
-				
-				
-
-
-				var randomItem = ingredientList[Math.floor(Math.random()*ingredientList.length)];
-				console.log(randomItem);
-
-				//ingredientsPicked.push(ingredientList[i][randomItem] + ', ');
-				
-			} else {
-				// do nothing
-			}
+				var randomItem = ingredientList[i][Math.floor(Math.random() * ingredientList[i].length)];
+				if (Pantry[randomItem] > 0) {
+					ingredientsPicked.push(randomItem);
+					console.log(Pantry[randomItem]);
+				} else {
+					
+				}		
+			} 
 		}
 
 	// Show completed drink 
-		$('.drinkUp').append('Yer drink has these barnacles of goodness, matey:' + ingredientsPicked.strong + ingredientsPicked.salty + ingredientsPicked.bitter + ingredientsPicked.sweet + ingredientsPicked.fruity);		
+		$('#drinkUp').append('Yer drink has these barnacles of goodness, matey: ' + ingredientsPicked.join(", ") + "!");	
 		}		
 });
+
+
+
+				//var randomItem = ingredientList.i[Math.floor(Math.random()*i.length)];
