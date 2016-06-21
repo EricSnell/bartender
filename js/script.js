@@ -42,18 +42,21 @@ $(document).ready(function(event){
 
 /*============ VARIABLES ============*/
 
+// Question/Taste Objects created using Question constructor
 	var strong = new Question("strong", "Do ye like yer drinks strong?");
 	var salty = new Question("salty", "Do ye like it with a salty tang?");
 	var bitter = new Question("bitter", "Are ye a lubber who likes it bitter?");
 	var sweet = new Question("sweet", "Would ye like a bit of sweetness with yer poison?");
 	var fruity = new Question("fruity", "Are ye one for a fruity finish?");
 
+
+// Array of all Question/Taste objects
 	var questions = [strong, salty, bitter, sweet, fruity];
 
 
 // All of the available ingredients
 	var ingredientList = {
-		strong: ['Glug of rum', 'slug of whisky', 'splash of gin'],
+		strong: ['Glug of rum', 'slug of whiskey', 'splash of gin'],
 		salty: ['Olive on a stick', 'salt-dusted rim', 'rasher of bacon'],
 		bitter: ['Shake of bitters', 'splash of tonic', 'twist of lemon peel'],
 		sweet: ['Sugar cube', 'spoonful of honey', 'splash of cola'],
@@ -62,11 +65,40 @@ $(document).ready(function(event){
 
 
 // Inventory of each ingredient
-	var pantry = {
-		"rum": 9, 
-		"whiskey": 7 ,
-		"gin": 5
-	}		
+	var strongInv = {
+		'Glug of rum': 9,
+		'slug of whiskey': 7,
+		'splash of gin': 8
+	}
+
+	var saltyInv = {
+		'Olive on a stick': 5,
+		'slat-dusted rim': 4,
+		'rasher of bacon': 7
+	}	
+
+	var bitterInv = {
+		'Shake of bitters': 5,
+		'splash of tonic': 6,
+		'twist of lemon peel': 3
+	}
+
+	var sweetInv = {
+		'Sugar cube': 5,
+		'spoonful of honey': 3,
+		'splash of cola': 4
+	}
+
+	var fruityInv = {
+		'Slice of orange': 6,
+		'dash of cassis': 8,
+		'cherry on top': 2
+	}
+
+
+// Array of Ingredients/Inventory objects
+	var Pantry = [strongInv, saltyInv, bitterInv, sweetInv, fruityInv];
+	
 
 	askQuestion();
 
@@ -83,13 +115,13 @@ $(document).ready(function(event){
 
 // Randomizes what ingredients to pick based on choices and displays drink
 	function createDrink() {
-		var ingredientsPicked; 
+		var ingredientsPicked = []; 
 
-		for (var type in ingredientList) {
-			if ($('#' + type).prop('checked')) {
+		for (var i in ingredientList) {
+			if ($('#' + i).prop('checked')) {  // 'For In' Loop that determines if YES is checked
 				// Get random item from array
-				//ingredientsPicked.push(ingredientList[type][0] + ', ');
-				ingredientsPicked[i] = 'rum'
+				//ingredientsPicked.push(ingredientList[i][0] + ', ');
+				
 			} else {
 				// do nothing
 			}
