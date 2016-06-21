@@ -50,24 +50,24 @@ $(document).ready(function(event){
 // Inventory of each ingredient
 	var Pantry = {
 		// strong 
-		'Glug of rum': 9,
-		'slug of whiskey': 7,
-		'splash of gin': 8,
+		'Glug of rum': 0,
+		'slug of whiskey': 0,
+		'splash of gin': 3,
 		// salty
-		'Olive on a stick': 5,
-		'slat-dusted rim': 4,
-		'rasher of bacon': 7,
+		'Olive on a stick': 4,
+		'slat-dusted rim': 2,
+		'rasher of bacon': 2,
 		// bitter
-		'Shake of bitters': 5,
-		'splash of tonic': 6,
+		'Shake of bitters': 4,
+		'splash of tonic': 2,
 		'twist of lemon peel': 3,
 		// sweet
-		'Sugar cube': 5,
+		'Sugar cube': 2,
 		'spoonful of honey': 3,
 		'splash of cola': 4,
 		// fruity
-		'Slice of orange': 6,
-		'dash of cassis': 8,
+		'Slice of orange': 2,
+		'dash of cassis': 3,
 		'cherry on top': 2,
 	};
 	
@@ -87,28 +87,48 @@ $(document).ready(function(event){
 
 // Randomizes what ingredients to pick based on choices and displays drink
 	function createDrink() {
+		// Array to store random ingredients
 		var ingredientsPicked = []; 
-		var counter = 0
 
+
+		// Loops through Ingredient List, checks if YES, then adds random ingredient to ingredientsPicked array
 		for (var i in ingredientList) {
-			if ($('#' + i).prop('checked')) {  // 'For In' Loop that determines if YES is checked
-			//	var objectArray = Object.keys()
-				// Get random item from array
-				var randomItem = ingredientList[i][Math.floor(Math.random() * ingredientList[i].length)];
-				if (Pantry[randomItem] > 0) {
-					ingredientsPicked.push(randomItem);
-					console.log(Pantry[randomItem]);
-				} else {
-					
-				}		
-			} 
+			if ($('#' + i).prop('checked')) { 
+
+
+			//	var randomItem = ingredientList[i][Math.floor(Math.random() * ingredientList[i].length)];
+				// randomItem ==> 'Glug of Rum'
+
+
+				// var i = Pantry.length;
+				// while (i--)
+				while (ingredientList[i].length > 0) {
+					var randomItem = ingredientList[i][Math.floor(Math.random() * ingredientList[i].length)];
+					if (Pantry[randomItem] > 0) {
+
+						ingredientsPicked.push(randomItem);
+						Pantry[randomItem]--;
+					}
+					else {
+						ingredientList[i].slice(ingredientList[i].indexOf(i), 1)
+					}
+				}
+
+				if (ingredientList[i].length === 0) {
+					alert('"Blimey!" No more ' + i + ' ingredients left!"');
+				}
+
+				console.log(randomItem);
+				console.log(Pantry[randomItem]);
+			
+
+
+
+			}
 		}
-
-	// Show completed drink 
-		$('#drinkUp').append('Yer drink has these barnacles of goodness, matey: ' + ingredientsPicked.join(", ") + "!");	
-		}		
+		
+		// Show completed drink 
+		$('#drinkUp').text('Yer drink has these barnacles of goodness, matey: ' + ingredientsPicked.join(", ") + "!");	
+		
+	}		
 });
-
-
-
-				//var randomItem = ingredientList.i[Math.floor(Math.random()*i.length)];
