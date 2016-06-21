@@ -27,27 +27,20 @@ $(document).ready(function(event){
 
 /*========== CONSTRUCTORS ===========*/
 
-	var Question = function(tastePref, bartenderQuestion) {
+	var Question = function(tastePref, bartenderQuestion, ingredients) {
 		this.tastePref = tastePref;
 		this.bartenderQuestion = bartenderQuestion;
+		this.ingredients = ingredients;
 	}
-
-
-//	var Ingredients = function(type, ingredients){
-//		this.type = type;
-//		this.ingredients = ingredients;
-//	}
-
-
 
 /*============ VARIABLES ============*/
 
 // Question/Taste Objects created using Question constructor
-	var strong = new Question("strong", "Do ye like yer drinks strong?");
-	var salty = new Question("salty", "Do ye like it with a salty tang?");
-	var bitter = new Question("bitter", "Are ye a lubber who likes it bitter?");
-	var sweet = new Question("sweet", "Would ye like a bit of sweetness with yer poison?");
-	var fruity = new Question("fruity", "Are ye one for a fruity finish?");
+	var strong = new Question("strong", "Do ye like yer drinks strong?", ['Glug of rum', 'slug of whiskey', 'splash of gin']);
+	var salty = new Question("salty", "Do ye like it with a salty tang?", ['Olive on a stick', 'salt-dusted rim', 'rasher of bacon']);
+	var bitter = new Question("bitter", "Are ye a lubber who likes it bitter?", ['Shake of bitters', 'splash of tonic', 'twist of lemon peel']);
+	var sweet = new Question("sweet", "Would ye like a bit of sweetness with yer poison?", ['Sugar cube', 'spoonful of honey', 'splash of cola']);
+	var fruity = new Question("fruity", "Are ye one for a fruity finish?", ['Slice of orange', 'dash of cassis', 'cherry on top']);
 
 
 // Array of all Question/Taste objects
@@ -121,9 +114,11 @@ $(document).ready(function(event){
 			if ($('#' + i).prop('checked')) {  // 'For In' Loop that determines if YES is checked
 				// Get random item from array
 				
+				
 
 
-				//var randomItem = ingredientList.i[Math.floor(Math.random()*items.length)];
+				var randomItem = ingredientList[Math.floor(Math.random()*ingredientList.length)];
+				console.log(randomItem);
 
 				//ingredientsPicked.push(ingredientList[i][randomItem] + ', ');
 				
