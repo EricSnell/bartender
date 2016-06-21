@@ -12,17 +12,20 @@
 // Ingredient category and Question category
 // create cunstroctors that create category
 
-// createDrink would randomize what ingredients to pick based on answers
+/*-------------------------------------------------------------------*/
+
+/*========= MAIN CODE BODY==========*/
 
 $(document).ready(function(event){
 	
-	$('.testButton').click(function(event){
+	$('.create-drink-button').click(function(event){
 		event.preventDefault();
 		createDrink();
-	})
+	});
 
 
-/*====== CONSTRUCTORS =======*/
+
+/*========== CONSTRUCTORS ===========*/
 
 	var Question = function(tastePref, bartenderQuestion) {
 		this.tastePref = tastePref;
@@ -36,51 +39,74 @@ $(document).ready(function(event){
 
 
 
-/*======= VARIABLES ========*/
+/*============ VARIABLES ============*/
 
-	var strong = new Question("strong", "Do you like your drinks strong?");
-	var salty = new Question("salty", "Do you like it salty?");
-	var bitter = new Question("bitter", "Bitter?");
-	var sweet = new Question("sweet", "Sweet?");
-	var fruity = new Question("fruity", "Some fruit flavor?");
+	var strong = new Question("strong", "Do ye like yer drinks strong?");
+	var salty = new Question("salty", "Do ye like it with a salty tang?");
+	var bitter = new Question("bitter", "Are ye a lubber who likes it bitter?");
+	var sweet = new Question("sweet", "Would ye like a bit of sweetness with yer poison?");
+	var fruity = new Question("fruity", "Are ye one for a fruity finish?");
 
 	var questions = [strong, salty, bitter, sweet, fruity];
 
 
-	// contains all of the available ingredients
+// All of the available ingredients
 	var ingredientList = {
-		strong: ['rum', 'whiskey', 'gin'],
-		salty: ['rumsalty', 'whiskeysalty', 'ginsalty'],
-		bitter: ['rumbitter', 'whiskeybitter', 'ginbitter'],
-		sweet: ['rumsweet', 'whiskeysweet', 'ginsweet'],
-		fruity: ['rumfruity', 'whiskeyfruity', 'ginfruity']
+		strong: ['Glug of rum', 'slug of whisky', 'splash of gin'],
+		salty: ['Olive on a stick', 'salt-dusted rim', 'rasher of bacon'],
+		bitter: ['Shake of bitters', 'splash of tonic', 'twist of lemon peel'],
+		sweet: ['Sugar cube', 'spoonful of honey', 'splash of cola'],
+		fruity: ['Slice of orange', 'dash of cassis', 'cherry on top']
 	}
 
 
-	var pantry = {
+// Inventory of each ingredient
+/*	var pantry = {
 		"rum": 10, 
 		"whiskey": 5,
 		"gin": 12
-	}
-
+	}		*/
 
 	askQuestion();
+
+
 /*--------- FUNCTIONS ----------*/
 
+// Displays Questions and Yes checkbox's
 	function askQuestion() {
 		for (var i = 0; i < questions.length; i++) {
-			$('.displayQuestion').append(questions[i].bartenderQuestion + '<input type="checkbox" id="' + questions[i].tastePref + '">YES<br>');
+			$('.displayQuestion').append(questions[i].bartenderQuestion + '<input type="checkbox" id="' + questions[i].tastePref + '">AYE!<br>');
 		};
 	}
 
+
+// Randomizes what ingredients to pick based on choices	
 	function createDrink() {
-		for (var i in ingredientList) {
-			if ($('#' + i).prop('checked')) {
-				
+		var ingredients; 
+
+		for (var type in ingredientList) {
+			if ($('#' + type).prop('checked')) {
+				// Get random item from array
+				//ingredients.push(ingredientList[type][0] + ', ');
+				ingredients[i] = 'rum'
 			} else {
-				
+				// do nothing
 			}
 		}
+
+	/*	ingredients = {
+			strong: 'rum',
+			salty: 'rumsalty'
+			bitter: : ''
+		}
+	 Show completed drink after 
+	$('.drinkUp').append('' + ingredients.strong + ingredients.salty + ingredients.bitter + ingredients.sweet + ingredients.fruity);		
 	}	
+
+		var drinks = {
+		strong: 'You want the Pina Coloada'
+		}
+	}
+	
 
 });
