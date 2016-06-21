@@ -120,26 +120,19 @@ $(document).ready(function(event){
 		for (var i in ingredientList) {
 			if ($('#' + i).prop('checked')) {  // 'For In' Loop that determines if YES is checked
 				// Get random item from array
-				//ingredientsPicked.push(ingredientList[i][0] + ', ');
+				
+
+
+				//var randomItem = ingredientList.i[Math.floor(Math.random()*items.length)];
+
+				//ingredientsPicked.push(ingredientList[i][randomItem] + ', ');
 				
 			} else {
 				// do nothing
 			}
 		}
 
-		ingredients = {
-			strong: 'rum',
-			salty: 'rumsalty'
-			bitter: ''
-		}	
-
-	// Show completed drink after 
-		$('.drinkUp').append('' + ingredientsPicked.strong + ingredientsPicked.salty + ingredientsPicked.bitter + ingredientsPicked.sweet + ingredientsPicked.fruity);		
-		}	
-
-	/*	var drinks = {
-			strong: 'You want the Pina Coloada'
-		}	*/
-
-	
+	// Show completed drink 
+		$('.drinkUp').append('Yer drink has these barnacles of goodness, matey:' + ingredientsPicked.strong + ingredientsPicked.salty + ingredientsPicked.bitter + ingredientsPicked.sweet + ingredientsPicked.fruity);		
+		}		
 });
