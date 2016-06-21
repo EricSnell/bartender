@@ -61,11 +61,11 @@ $(document).ready(function(event){
 
 
 // Inventory of each ingredient
-/*	var pantry = {
-		"rum": 10, 
-		"whiskey": 5,
-		"gin": 12
-	}		*/
+	var pantry = {
+		"rum": 9, 
+		"whiskey": 7 ,
+		"gin": 5
+	}		
 
 	askQuestion();
 
