@@ -32,10 +32,11 @@ $(document).ready(function(event){
 		this.bartenderQuestion = bartenderQuestion;
 	}
 
-	var Ingredients = function(type, ingredients){
-		this.type = type;
-		this.ingredients = ingredients;
-	}
+
+//	var Ingredients = function(type, ingredients){
+//		this.type = type;
+//		this.ingredients = ingredients;
+//	}
 
 
 
@@ -70,7 +71,7 @@ $(document).ready(function(event){
 	askQuestion();
 
 
-/*--------- FUNCTIONS ----------*/
+/*============ FUNCTIONS ==============*/
 
 // Displays Questions and Yes checkbox's
 	function askQuestion() {
@@ -80,33 +81,33 @@ $(document).ready(function(event){
 	}
 
 
-// Randomizes what ingredients to pick based on choices	
+// Randomizes what ingredients to pick based on choices and displays drink
 	function createDrink() {
-		var ingredients; 
+		var ingredientsPicked; 
 
 		for (var type in ingredientList) {
 			if ($('#' + type).prop('checked')) {
 				// Get random item from array
-				//ingredients.push(ingredientList[type][0] + ', ');
-				ingredients[i] = 'rum'
+				//ingredientsPicked.push(ingredientList[type][0] + ', ');
+				ingredientsPicked[i] = 'rum'
 			} else {
 				// do nothing
 			}
 		}
 
-	/*	ingredients = {
+		ingredients = {
 			strong: 'rum',
 			salty: 'rumsalty'
-			bitter: : ''
-		}
-	 Show completed drink after 
-	$('.drinkUp').append('' + ingredients.strong + ingredients.salty + ingredients.bitter + ingredients.sweet + ingredients.fruity);		
-	}	
+			bitter: ''
+		}	
 
-		var drinks = {
-		strong: 'You want the Pina Coloada'
-		}
-	}
+	// Show completed drink after 
+		$('.drinkUp').append('' + ingredientsPicked.strong + ingredientsPicked.salty + ingredientsPicked.bitter + ingredientsPicked.sweet + ingredientsPicked.fruity);		
+		}	
+
+	/*	var drinks = {
+			strong: 'You want the Pina Coloada'
+		}	*/
+
 	
-
 });
