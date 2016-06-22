@@ -18,9 +18,6 @@ $(document).ready(function(event){
 		this.ingredients = ingredients;
 	};
 
-//	DrinkStyle.prototype.randomizer = function () {
-//		return this.ingredients[Math.floor(Math.random() * 3)]
-//	};
 
 
 /*============ VARIABLES ============*/
@@ -90,20 +87,25 @@ $(document).ready(function(event){
 		// Array to store random ingredients
 		var ingredientsPicked = []; 
 
-
 		// Loops through Ingredient List, checks if YES, then adds random ingredient to ingredientsPicked array
 		for (var i in ingredientList) {
 			if ($('#' + i).prop('checked')) { 
+				var randomItem = ingredientList[i][Math.floor(Math.random() * ingredientList[i].length)];
+				
+				ingredientsPicked.push(randomItem);
+				console.log(ingredientsPicked);
+			}
+			// Show completed drink 
+			$('#drinkUp').text('Here ye arr, matey! A ' + ingredientsPicked.join(", ") + "!");	
+		}					
+	}
 
+});
 
-			//	var randomItem = ingredientList[i][Math.floor(Math.random() * ingredientList[i].length)];
-				// randomItem ==> 'Glug of Rum'
+				/*	while (ingredientList[i].length > 0) {
 
-
-				// var i = Pantry.length;
-				// while (i--)
-				while (ingredientList[i].length > 0) {
 					var randomItem = ingredientList[i][Math.floor(Math.random() * ingredientList[i].length)];
+
 					if (Pantry[randomItem] > 0) {
 
 						ingredientsPicked.push(randomItem);
@@ -117,18 +119,4 @@ $(document).ready(function(event){
 				if (ingredientList[i].length === 0) {
 					alert('"Blimey!" No more ' + i + ' ingredients left!"');
 				}
-
-				console.log(randomItem);
-				console.log(Pantry[randomItem]);
-			
-
-
-
-			}
-		}
-		
-		// Show completed drink 
-		$('#drinkUp').text('Yer drink has these barnacles of goodness, matey: ' + ingredientsPicked.join(", ") + "!");	
-		
-	}		
-});
+			*/

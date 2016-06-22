@@ -1,0 +1,49 @@
+body {
+	background-image: url('../images/background.jpg');
+	background-repeat;: no-repeat;
+	background-position: center;
+}
+
+h2 {
+	text-align: center;
+	color: white;
+	font-size: 4em;
+	margin-bottom: -1em;
+	text-shadow: -2px 2px black;
+}
+
+.container {
+	font-weight: bold;
+	text-align: center;
+	text-shadow: -.5px 1px grey;
+	margin: 3em auto 1em;
+	width: 550px;
+	height: 75px;
+	display: block;
+	background-image: url("../images/scroll.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 7em 0 17em .7em;
+	
+}
+
+.create-drink-button {
+	background-color: beige;
+	font-weight: bold;
+	margin: 2em auto 1em;
+	padding: 1em 4em;
+	border-radius: 10px;
+
+}
+
+#drinkUp {
+	width: 380px;
+	height: 80px;
+	margin: 0 auto;
+	color: white;
+	text-shadow: -2.5px 1.5px black;
+	font-size: 24px;
+
+}
+
+
